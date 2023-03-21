@@ -1,32 +1,16 @@
-const tab = Array.from(document.querySelectorAll(".tab"))
-const tabContent = Array.from(document.querySelectorAll(".tab__content"))
 
-for (let i = 0; i < tab.length; i++) {
+const tab = document.querySelectorAll('.tab');
+const tabContent = document.querySelectorAll('.tab__content');
+const tabs = document.querySelector('#tabs1');
 
-    tab[i].addEventListener("click", function () {
+tabs.addEventListener('click', (e) => {
+    if (e.target.closest('.tab'))
+      activeContent(e.target, tab, tabContent);
+  });
 
-        if (tab[i].className.includes("tab_active")) {
-            tab[i].classList.remove("tab_active")
-            
-        } else {
-            for (let item of tab) {
-                if (item.className.includes("tab_active")) {
-                    item.classList.remove("tab_active")
-                }
-                tab[i].classList.add("tab_active")
-                
-            }
-        }
-        if (tabContent[i].className.includes("tab__content_active")) {
-            tabContent[i].classList.remove("tab__content_active")
-           
-        } else {
-            for (let items of tabContent) {
-                if (items.className.includes("tab__content_active")) {
-                    items.classList.remove("tab__content_active")
-                }
-                tabContent[i].classList.add("tab__content_active")
-            }
-        } 
-    })
-}
+function activeContent(e, arr1, arr2) {
+    arr1.forEach((element) => element.classList.remove('tab_active'));
+    arr2.forEach((element) => element.classList.remove('tab__content_active'));
+    e.classList.add('tab_active');
+    arr2[Array.from(arr1).indexOf(e)].classList.add('tab__content_active');
+  }
