@@ -1,10 +1,14 @@
-const timer = document.getElementById('timer');
-function start() {
-	let setIntervalId = setInterval(() => {
-    timer.textContent -= 1;
-    if (timer.textContent === '0') {
-      alert('You have won the competition!');
-      clearInterval(setIntervalId);
-    }
-  }, 1000);
+
+let timer;
+countdown();
+function countdown() {
+  x = document.getElementById("timer").textContent;
+  x--;
+  document.getElementById("timer").textContent = x;
+  if (x <= 0) {
+    clearTimeout(timer);
+    alert("Vy pobedili v konkurse!");
+  } else {
+    timer = setTimeout(countdown, 1000);
+  }
 }
