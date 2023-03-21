@@ -3,7 +3,7 @@ const dropdownItems = Array.from(document.querySelectorAll('.dropdown__item'));
 const dropdownList = document.querySelector('.dropdown__list');
 
 dropdowwnValue.addEventListener('click',function() {
-  dropdownList.classList.add('dropdown__list_active');
+  dropdownList.classList.toggle('dropdown__list_active');
   })
 
 dropdownItems.forEach(item => 
